@@ -1,0 +1,17 @@
+https://nx.dev/recipes/angular/dynamic-module-federation-with-angular
+
+yarn create nx-workspace mfe-november --preset=apps
+cd mfe-november
+npx nx add @nx/angular
+nx g @nx/angular:host apps/dashboard --prefix=mfe-november
+nx g @nx/angular:remote apps/login --prefix=mfe-november --host=dashboard
+nx g @nx/angular:lib libs/shared/data-access-user
+#nx g @nx/angular:service libs/shared/data-access-user/src/lib/user
+/Users/meanstack02/git/mfe/mfe-november/node_modules/.bin/nx g @schematics/angular:service --name=user --project=data-access-user --path=libs/shared/data-access-user/src/lib/user --no-interactive --dry-run
+
+npx nx serve shell
+nx run login:serve
+nx serve dashboard --devRemotes=login
+#This concludes the setup required for a Micro Frontend approach using Static Module Federation.
+
+
