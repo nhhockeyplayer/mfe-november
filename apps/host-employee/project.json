@@ -1,31 +1,31 @@
 {
-  "name": "dashboard",
+  "name": "host-employee",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "mfe-november",
-  "sourceRoot": "apps/dashboard/src",
+  "prefix": "app",
+  "sourceRoot": "apps/host-employee/src",
   "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/dashboard",
-        "index": "apps/dashboard/src/index.html",
-        "main": "apps/dashboard/src/main.ts",
+        "outputPath": "dist/apps/host-employee",
+        "index": "apps/host-employee/src/index.html",
+        "main": "apps/host-employee/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/dashboard/tsconfig.app.json",
+        "tsConfig": "apps/host-employee/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/dashboard/public"
+            "input": "apps/host-employee/public"
           }
         ],
-        "styles": ["apps/dashboard/src/styles.scss"],
+        "styles": ["apps/host-employee/src/styles.scss"],
         "scripts": [],
         "customWebpackConfig": {
-          "path": "apps/dashboard/webpack.config.ts"
+          "path": "apps/host-employee/webpack.config.ts"
         }
       },
       "configurations": {
@@ -42,10 +42,7 @@
               "maximumError": "4kb"
             }
           ],
-          "outputHashing": "all",
-          "customWebpackConfig": {
-            "path": "apps/dashboard/webpack.prod.config.ts"
-          }
+          "outputHashing": "all"
         },
         "development": {
           "buildOptimizer": false,
@@ -66,10 +63,10 @@
       },
       "configurations": {
         "production": {
-          "buildTarget": "dashboard:build:production"
+          "buildTarget": "host-employee:build:production"
         },
         "development": {
-          "buildTarget": "dashboard:build:development"
+          "buildTarget": "host-employee:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -77,7 +74,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "buildTarget": "dashboard:build"
+        "buildTarget": "host-employee:build"
       }
     },
     "lint": {
@@ -87,13 +84,13 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/dashboard/jest.config.ts"
+        "jestConfig": "apps/host-employee/jest.config.ts"
       }
     },
     "serve-static": {
       "executor": "@nx/web:file-server",
       "options": {
-        "buildTarget": "dashboard:build",
+        "buildTarget": "host-employee:build",
         "port": 4200,
         "spa": true
       }

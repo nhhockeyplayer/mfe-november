@@ -23,16 +23,16 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.isLoggedIn$
-        .pipe(distinctUntilChanged())
-        .subscribe(async (loggedIn) => {
-          // Queue the navigation after initialNavigation blocking is completed
-          setTimeout(() => {
-            if (!loggedIn) {
-              this.router.navigateByUrl('login');
-            } else {
-              this.router.navigateByUrl('');
-            }
-          });
+      .pipe(distinctUntilChanged())
+      .subscribe(async (loggedIn) => {
+        // Queue the navigation after initialNavigation blocking is completed
+        setTimeout(() => {
+          if (!loggedIn) {
+            this.router.navigateByUrl('login');
+          } else {
+            this.router.navigateByUrl('');
+          }
         });
+      });
   }
 }
