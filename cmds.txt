@@ -40,3 +40,18 @@ nx run-many --all --target=build
 now re-execute
 
 nx serve dashboard --devRemotes=login
+
+# NOW CREATE DYNAMIC HOST APP
+nx g @nx/angular:host apps/employee --remotes=login --dynamic --dry-run
+nx g @nx/angular:host apps/employee --remotes=login --dynamic
+
+#NOW CREATE DYNAMIC REMOTE
+nx g @nx/angular:remote apps/todo --host=employee
+
+nx run-many --all --target=build
+now re-execute
+
+nx serve dashboard  --devRemotes=login,employee
+nx serve employee  --devRemotes=login,todo
+
+
